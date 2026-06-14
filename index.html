@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alayaki Temitope — Web Designer & Frontend Developer</title>
+<title>Alayaki Temitope — Frontend Developer & Web Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -161,7 +161,7 @@
     font-size: 0.8rem;
     color: var(--muted);
     margin-top: 1.8rem;
-    max-width: 30ch;
+    max-width: 32ch;
     line-height: 1.8;
     letter-spacing: 0.05em;
   }
@@ -230,13 +230,25 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+    user-select: none;
+  }
+  .portrait-initials {
     font-family: 'Playfair Display', serif;
     font-size: 5rem;
     color: var(--gold-dim);
     font-style: italic;
-    user-select: none;
+    line-height: 1;
+  }
+  .portrait-name-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
   .portrait-label {
     position: absolute;
@@ -249,6 +261,7 @@
     text-transform: uppercase;
     padding: 0.5rem 0.8rem;
     font-weight: 500;
+    z-index: 2;
   }
   .hero-border {
     position: absolute;
@@ -259,7 +272,7 @@
     background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
     transform: translateY(-50%);
   }
-  .hero-num {
+  .hero-location {
     position: absolute;
     bottom: 5rem;
     right: 3rem;
@@ -270,6 +283,9 @@
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   /* SCROLL LINE */
@@ -370,14 +386,6 @@
     position: relative;
     overflow: hidden;
   }
-  .skill-pill::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
   .skill-pill:hover {
     border-color: var(--gold-dim);
     color: var(--cream);
@@ -473,10 +481,10 @@
     transition: transform 0.6s ease, opacity 0.3s;
   }
   .project-card:hover .project-thumb-bg { transform: scale(1.05); opacity: 0.7; }
-  .thumb-1 { background: linear-gradient(135deg, #2a1f0a, #4a3515, #c9a84c22); }
-  .thumb-2 { background: linear-gradient(135deg, #0a1520, #153050, #4a90d922); }
-  .thumb-3 { background: linear-gradient(135deg, #150a20, #301540, #9b4ac922); }
-  .thumb-4 { background: linear-gradient(135deg, #0a1a0a, #153015, #4ac94a22); }
+  .thumb-1 { background: linear-gradient(135deg, #1a1206, #3d2a0a, #c9a84c18); }
+  .thumb-2 { background: linear-gradient(135deg, #060e1a, #102040, #4a90d918); }
+  .thumb-3 { background: linear-gradient(135deg, #0e0618, #22083a, #8b5cf618); }
+  .thumb-4 { background: linear-gradient(135deg, #061210, #0a2420, #10b98118); }
   .thumb-icon {
     font-size: 2.5rem;
     z-index: 1;
@@ -532,6 +540,12 @@
     gap: 5rem;
   }
   .exp-left { padding-top: 5rem; }
+  .exp-left p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+  }
   .timeline { position: relative; }
   .timeline::before {
     content: '';
@@ -586,6 +600,68 @@
     margin-bottom: 0.8rem;
   }
   .timeline-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+  .timeline-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+  .timeline-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.5rem;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications {
+    border-top: 1px solid var(--border);
+    padding: 7rem 3rem;
+  }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .cert-card {
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .cert-card:hover { border-color: var(--gold-dim); }
+  .cert-card:hover::before { transform: scaleX(1); }
+  .cert-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .cert-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 
   /* CONTACT */
   #contact {
@@ -736,6 +812,7 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-row: span 1; }
     #experience { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-left { padding-top: 0; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
@@ -749,7 +826,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">YN.</a>
+  <a href="#" class="nav-logo">AT.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
@@ -761,10 +838,312 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-tag">Available for projects</div>
+    <div class="hero-tag">Open to opportunities — Lagos, Nigeria</div>
     <h1>
-      Creative<br>
-      <em>Mind,</em><br>
-      Sharp Code.
+      Build,
+      <em>Design,</em>
+      Deliver.
     </h1>
-    <p class="hero-subtitle">I craft digital experiences that balance aesthetic precision with technical excellence. Full-stack developer & designe
+    <p class="hero-subtitle">Frontend Developer & Web Designer who bridges elegant interfaces with solid engineering. React, Node.js, and an eye for detail.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost"><span>→</span> Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-border"></div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <div class="portrait-placeholder">
+          <div class="portrait-initials">AT.</div>
+          <div class="portrait-name-tag">Alayaki Temitope</div>
+        </div>
+        <div class="portrait-label">Lagos · NG</div>
+      </div>
+    </div>
+    <div class="hero-location">Frontend Developer &amp; Web Designer</div>
+  </div>
+
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <div class="scroll-track"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left fade-in">
+    <div class="section-label">About</div>
+    <h2>Code with <em>purpose,</em> design with intent.</h2>
+    <p class="about-text">
+      I'm Alayaki Temitope Omolayo — a Frontend Developer, Web Designer, and Computer Hardware Engineer based in Lagos, Nigeria. I hold a B.Eng from Olabisi Onabanjo University and work across the full stack from pixel-perfect interfaces to data pipelines.
+    </p>
+    <p class="about-text">
+      My work spans React applications, WordPress platforms, web scraping systems, and AI-assisted tools. I care about clean architecture, purposeful design, and solutions that actually ship.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-pill">React.js</div>
+      <div class="skill-pill">Node.js</div>
+      <div class="skill-pill">JavaScript</div>
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">HTML / CSS</div>
+      <div class="skill-pill">Tailwind CSS</div>
+      <div class="skill-pill">Flutter</div>
+      <div class="skill-pill">WordPress</div>
+      <div class="skill-pill">BeautifulSoup</div>
+      <div class="skill-pill">Selenium</div>
+      <div class="skill-pill">Git / GitHub</div>
+      <div class="skill-pill">Generative AI</div>
+    </div>
+  </div>
+  <div class="about-stats fade-in">
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years of experience</div>
+      <div class="stat-desc">Spanning frontend development, web design, hardware engineering, and data engineering across freelance and project work.</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Projects shipped</div>
+      <div class="stat-desc">From B2C e-commerce platforms and portfolio sites to real estate apps, soccer academy systems, and data scraping pipelines.</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">C1</div>
+      <div class="stat-label">English · Yoruba Native</div>
+      <div class="stat-desc">Clear communicator across technical and non-technical audiences, fluent in both English and Yoruba.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header fade-in">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2>Projects that ship and perform.</h2>
+    </div>
+    <div class="work-count">Featured — 4 of 10+</div>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Featured -->
+    <div class="project-card featured fade-in">
+      <div class="project-thumb">
+        <div class="project-thumb-bg thumb-1"></div>
+        <div class="thumb-icon">⚡</div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Vite</span>
+          <span class="project-tag">Tailwind</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+        <div class="project-title">Professional Portfolio Platform</div>
+        <p class="project-desc">A high-performance personal portfolio built with React + Vite and Tailwind CSS, featuring dark editorial aesthetics, scroll-triggered animations, and a gold accent system. Deployed on GitHub Pages with a Node.js backend layer for dynamic content.</p>
+        <a href="#" class="project-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card fade-in">
+      <div class="project-thumb">
+        <div class="project-thumb-bg thumb-2"></div>
+        <div class="thumb-icon">🏠</div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">Leaflet.js</span>
+          <span class="project-tag">Chart.js</span>
+        </div>
+        <div class="project-title">NaijaHomes</div>
+        <p class="project-desc">Nigerian real estate web app covering Lagos, Abuja and major cities — with interactive maps, mortgage calculators, and property comparison tools calibrated to local market rates.</p>
+        <a href="#" class="project-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card fade-in">
+      <div class="project-thumb">
+        <div class="project-thumb-bg thumb-3"></div>
+        <div class="thumb-icon">⚽</div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Tailwind</span>
+          <span class="project-tag">Recharts</span>
+        </div>
+        <div class="project-title">Elite FC Academy</div>
+        <p class="project-desc">Full React + Tailwind soccer academy web application with player dashboards, training schedules, and data visualizations — multiple screens with live chart components.</p>
+        <a href="#" class="project-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="project-card fade-in">
+      <div class="project-thumb">
+        <div class="project-thumb-bg thumb-4"></div>
+        <div class="thumb-icon">🛒</div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">WordPress</span>
+          <span class="project-tag">WooCommerce</span>
+          <span class="project-tag">PHP</span>
+        </div>
+        <div class="project-title">B2C E-Commerce Platform</div>
+        <p class="project-desc">End-to-end WordPress e-commerce build with WooCommerce, custom theme development, payment gateway integration, and ongoing performance optimisation for Nigerian market buyers.</p>
+        <a href="#" class="project-link">View Project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-left fade-in">
+    <div class="section-label">Experience</div>
+    <h2>Where I've built.</h2>
+    <p>A track record of remote freelance work, project delivery, and cross-discipline engineering from hardware to AI tooling.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2022 — Present</div>
+      <div class="timeline-role">Freelance Software Developer & Data Engineer</div>
+      <div class="timeline-company">Remote · Self-employed</div>
+      <div class="timeline-desc">Build and deliver web applications, scrapers, and data pipelines for clients across Nigeria and internationally. Work spans React frontends, Python data extraction (BeautifulSoup, Selenium), API integrations, CSV/JSON/Google Sheets automation, and prompt engineering with generative AI tools. Handled full project lifecycle from scoping to deployment.</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">React</span>
+        <span class="timeline-tag">Python</span>
+        <span class="timeline-tag">Node.js</span>
+        <span class="timeline-tag">AI Tooling</span>
+        <span class="timeline-tag">Data Engineering</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2021 — 2022</div>
+      <div class="timeline-role">WordPress Developer</div>
+      <div class="timeline-company">Freelance · Nigeria</div>
+      <div class="timeline-desc">Designed and developed WordPress sites for SME clients — custom themes, WooCommerce builds, plugin configuration, and ongoing maintenance. Focused on mobile performance and clean UX for Nigerian internet infrastructure constraints.</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">WordPress</span>
+        <span class="timeline-tag">WooCommerce</span>
+        <span class="timeline-tag">PHP</span>
+        <span class="timeline-tag">CSS</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Education</div>
+      <div class="timeline-role">B.Eng — Engineering</div>
+      <div class="timeline-company">Olabisi Onabanjo University · Ogun State, Nigeria</div>
+      <div class="timeline-desc">Bachelor of Engineering with a foundation in hardware systems, electronics, and technical problem-solving that underpins a systems-thinking approach to software development.</div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Hardware Engineering</span>
+        <span class="timeline-tag">Electronics</span>
+        <span class="timeline-tag">Systems Thinking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label fade-in">Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-card fade-in">
+      <div class="cert-icon">🔐</div>
+      <div class="cert-title">Cybersecurity Internship</div>
+      <div class="cert-org">Code Alpha</div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon">🛡️</div>
+      <div class="cert-title">Phishing Awareness Training</div>
+      <div class="cert-org">Verified Certification</div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon">🤖</div>
+      <div class="cert-title">AI Evaluation & Annotation</div>
+      <div class="cert-org">Prompt Engineering · Generative AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-eyebrow">Let's build something</div>
+  <h2 class="contact-headline">Ready when <em>you are.</em></h2>
+  <p class="contact-sub">Whether it's a product, a platform, or just an idea — I'm open to freelance projects, collaborations, and full-time roles.</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/alayaki-temitope-0626b035b" target="_blank" class="contact-link">
+      <span class="icon">💼</span>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com" target="_blank" class="contact-link">
+      <span class="icon">⬡</span>
+      <span>GitHub</span>
+    </a>
+    <a href="mailto:your@email.com" class="contact-link">
+      <span class="icon">✉</span>
+      <span>Email Me</span>
+    </a>
+  </div>
+  <div class="email-display">
+    Or reach me directly at <a href="mailto:your@email.com">your@email.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Alayaki Temitope Omolayo — All rights reserved.</div>
+  <nav class="footer-nav">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = -100, my = -100, rx = -100, ry = -100;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  (function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  // Intersection observer for fade-ins
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .timeline-item').forEach(el => observer.observe(el));
+
+  // Stagger timeline items
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.15}s`;
+  });
+</script>
+</body>
+</html>
